@@ -74,8 +74,8 @@ class SplashScreen extends StatelessWidget {
                 onTap: () {
                   Get.toNamed('/login'); // Ensure the login route is properly defined in GetX
                 },
-                width: 250, // Custom width for the button
-                height: 40, // Custom height for the button
+                width: 250,
+                height: 40, 
               ),
             ),
           ),

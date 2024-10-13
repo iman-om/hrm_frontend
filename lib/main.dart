@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hrm_front/common_features/auth/views/Login_Screen.dart';
 import 'package:hrm_front/common_features/splash/splash_screen.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: () => SplashScreen()), 
-        // GetPage(name: '/login', page: () => LoginScreen()), 
+        GetPage(name: '/login', page: () => LoginScreen()), 
         // GetPage(name: '/home', page: () => EmployeeHomePage( )), 
       ],
     );
