@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hrm_front/widgets/gradient_button.dart'; // Ensure this path is correct
@@ -43,6 +42,8 @@ class SplashScreen extends StatelessWidget {
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
+                    fontFamily: 'Montserrat',
+                    fontStyle: FontStyle.italic,
                   ),
                 ),
                 SizedBox(height: 10),
@@ -54,8 +55,10 @@ class SplashScreen extends StatelessWidget {
                     'Your all-in-one solution for efficient team management and employee success. Optimize your workforce together!',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 18,
                       color: Colors.white,
+                      fontFamily: 'Montserrat',
+                      fontStyle: FontStyle.italic,
                     ),
                   ),
                 ),
@@ -72,10 +75,11 @@ class SplashScreen extends StatelessWidget {
               child: GradientButton(
                 text: 'Next',
                 onTap: () {
-                  Get.toNamed('/login'); // Ensure the login route is properly defined in GetX
+                  Get.toNamed(
+                      '/login'); // Ensure the login route is properly defined in GetX
                 },
                 width: 250,
-                height: 40, 
+                height: 40,
               ),
             ),
           ),
