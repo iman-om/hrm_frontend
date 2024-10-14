@@ -1,10 +1,12 @@
+
+
+
 // import 'dart:convert';
 // import 'package:get/get.dart';
-// import 'package:hrm_front/employee_app/Features/auth/views/Login_Screen.dart';
-// import 'package:hrm_front/userdetails/view/userdetails.dart';
+// import 'package:hrm_front/common_features/auth/views/Login_Screen.dart';
 // import 'package:http/http.dart' as http;
 // import 'package:shared_preferences/shared_preferences.dart';  // Token storage
-// import 'package:hrm_front/employee_app/Features/Homee/Home_screen.dart';
+// // import 'package:hrm_front/employee_app/Features/Homee/Home_screen.dart';
 
 // class AuthenticationController extends GetxController {
 //   final isLoading = false.obs;
@@ -17,7 +19,7 @@
 //       isLoading.value = true;
 //       errorMessage.value = '';
 
-//       const String apiUrl = 'https://306f-105-235-129-152.ngrok-free.app/api/login';
+//       const String apiUrl = 'https://59e2-105-235-130-183.ngrok-free.app/api/login';
 
 //       final response = await http.post(
 //         Uri.parse(apiUrl),
@@ -38,16 +40,9 @@
 //         SharedPreferences prefs = await SharedPreferences.getInstance();
 //         await prefs.setString('authtoken', token);
 
-//         // Check if the user has already entered their details
-//         // bool hasUserDetails = prefs.containsKey('userDetails'); // Assume this key indicates user details exist
-
-//         if (hasUserDetails) {
-//           // Navigate to home screen if details already exist
-//           Get.off(() => EmployeeHomePage());
-//         } else {
-//           // Navigate to user details screen if first login
-//           // Get.off(() => UserDetailsScreen()); // Ensure this points to your user details screen
-//         }
+//         // Show success message and navigate to home screen
+//         // Get.snackbar('Login Success', 'You are logged in!');
+//         // Get.off(() => EmployeeHomePage());
         
 //       } else {
 //         errorMessage.value = 'Error: ${response.statusCode}\n${response.body}';
@@ -59,7 +54,7 @@
 //     }
 //   }
 
-//   Future<String?> getToken() async {
+//    Future<String?> getToken() async {
 //     SharedPreferences prefs = await SharedPreferences.getInstance();
 //     return prefs.getString('authtoken');
 //   }
@@ -77,15 +72,13 @@
 //   }
 // }
 
-
-
-
 import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:hrm_front/common_features/auth/views/Login_Screen.dart';
+import 'package:hrm_front/employee_app/features/homepage/employee_screen.dart';
+import 'package:hrm_front/manager_app/features/homepage/manager_home.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';  // Token storage
-// import 'package:hrm_front/employee_app/Features/Homee/Home_screen.dart';
 
 class AuthenticationController extends GetxController {
   final isLoading = false.obs;
@@ -93,7 +86,7 @@ class AuthenticationController extends GetxController {
   final passwordVisible = false.obs;
 
   // Login Method
-  Future<void> login(String email, String password) async {
+  Future<void> login(String email, String password, String role) async {
     try {
       isLoading.value = true;
       errorMessage.value = '';
@@ -114,15 +107,26 @@ class AuthenticationController extends GetxController {
 
       if (response.statusCode == 201 || response.statusCode == 200) {
         final data = json.decode(response.body);
-        String token = data['token'];
 
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        await prefs.setString('authtoken', token);
+        // Ensure 'token' exists in response
+        if (data['token'] != null) {
+          String token = data['token'];
 
-        // Show success message and navigate to home screen
-        // Get.snackbar('Login Success', 'You are logged in!');
-        // Get.off(() => EmployeeHomePage());
-        
+          // Save token in SharedPreferences
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          await prefs.setString('authtoken', token);
+
+          // Navigate based on role and email
+          if (role == 'Manager' && email == 'assiatobal97@gmail.com') {
+            Get.off(() => ManagerHomePage());
+          } else if (role == 'Employee') {
+            Get.off(() => EmployeeHomePage());
+          } else {
+            errorMessage.value = 'Invalid role or email combination.';
+          }
+        } else {
+          errorMessage.value = 'Token not found in the response.';
+        }
       } else {
         errorMessage.value = 'Error: ${response.statusCode}\n${response.body}';
       }
@@ -133,7 +137,8 @@ class AuthenticationController extends GetxController {
     }
   }
 
-   Future<String?> getToken() async {
+  // Retrieve token method
+  Future<String?> getToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString('authtoken');
   }
