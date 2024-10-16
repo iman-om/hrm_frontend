@@ -43,21 +43,21 @@ class InputWidget extends StatelessWidget {
   final String? errorText; // Added for error text display
 
   const InputWidget({
-    Key? key,
+    super.key,
     required this.hintText,
     this.labelText,
     required this.obscureText,
     required this.controller,
     this.suffixIcon,
     this.errorText, // Optional error text
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
       obscureText: obscureText,
-      style: TextStyle(color: Colors.grey),
+      style: const TextStyle(color: Colors.grey),
       decoration: InputDecoration(
         labelText: labelText,
         hintText: hintText,

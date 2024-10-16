@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:hrm_front/widgets/attendance_statue.dart';
 
 class AttendanceSummary extends StatelessWidget {
+  const AttendanceSummary({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.grey[100],
         borderRadius: BorderRadius.circular(12),
@@ -17,7 +19,7 @@ class AttendanceSummary extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           AttendanceStatus(count: '26', status: 'Present'),

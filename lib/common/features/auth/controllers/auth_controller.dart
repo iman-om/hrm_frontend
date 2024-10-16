@@ -1,9 +1,12 @@
+
+
 import 'dart:convert';
 import 'package:get/get.dart';
-import 'package:hrm_front/common_features/auth/views/Login_Screen.dart';
+import 'package:hrm_front/common/features/auth/views/Login_Screen.dart';
+import 'package:hrm_front/employee_app/features/homepage/employee_screen.dart';
+import 'package:hrm_front/manager_app/features/homepage/manager_home.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';  // Token storage
-// import 'package:hrm_front/employee_app/Features/Homee/Home_screen.dart';
 
 class AuthenticationController extends GetxController {
   final isLoading = false.obs;
@@ -11,12 +14,12 @@ class AuthenticationController extends GetxController {
   final passwordVisible = false.obs;
 
   // Login Method
-  Future<void> login(String email, String password) async {
+  Future<void> login(String email, String password, String role) async {
     try {
       isLoading.value = true;
       errorMessage.value = '';
 
-      const String apiUrl = 'https://59e2-105-235-130-183.ngrok-free.app/api/login';
+      const String apiUrl = 'https://f4b6-105-235-128-52.ngrok-free.app/api/login';
 
       final response = await http.post(
         Uri.parse(apiUrl),
@@ -32,22 +35,25 @@ class AuthenticationController extends GetxController {
 
       if (response.statusCode == 201 || response.statusCode == 200) {
         final data = json.decode(response.body);
-        String token = data['token'];
 
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        await prefs.setString('authtoken', token);
+        // Ensure 'token' exists in response
+        if (data['token'] != null) {
+          String token = data['token'];
 
-        // Check if it's the user's first login
-        bool isFirstLogin = prefs.getBool('isFirstLogin') ?? true;
+          // Save token in SharedPreferences
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          await prefs.setString('authtoken', token);
 
-        if (isFirstLogin) {
-          // If it's the first login, navigate to the user details page
-          // Get.offAll(() => UserDetailsScreen());
-          // Set the flag to false after redirecting
-          await prefs.setBool('isFirstLogin', false);
+          // Navigate based on role and email
+          if (role == 'Manager' && email == 'assiatobal97@gmail.com') {
+            // Get.off(() => ManagerHomePage());
+          } else if (role == 'Employee') {
+            Get.off(() => EmployeeHomePage());
+          } else {
+            errorMessage.value = 'Invalid role or email combination.';
+          }
         } else {
-          // If not the first login, navigate to the home screen
-          // Get.offAll(() => EmployeeHomePage());
+          errorMessage.value = 'Token not found in the response.';
         }
       } else {
         errorMessage.value = 'Error: ${response.statusCode}\n${response.body}';
@@ -59,6 +65,7 @@ class AuthenticationController extends GetxController {
     }
   }
 
+  // Retrieve token method
   Future<String?> getToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString('authtoken');
@@ -68,7 +75,6 @@ class AuthenticationController extends GetxController {
   Future<void> logout() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.remove('authtoken');  
-    await prefs.setBool('isFirstLogin', true); // Resetting the first login flag
     Get.offAll(() => LoginScreen());  
   }
 

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomSearchBar extends StatelessWidget {
   final VoidCallback onAddPressed;
@@ -24,7 +23,7 @@ class CustomSearchBar extends StatelessWidget {
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.4),
-                    offset: Offset(0, 4), // Shadow position
+                    offset: const Offset(0, 4), // Shadow position
                     blurRadius: 4, // Shadow blur
                   ),
                 ],
@@ -60,7 +59,7 @@ class CustomSearchBar extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                   ],
                 ),
               ),

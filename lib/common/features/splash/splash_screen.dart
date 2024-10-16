@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:hrm_front/widgets/gradient_button.dart'; // Ensure this path is correct
 
 class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +33,7 @@ class SplashScreen extends StatelessWidget {
           ),
 
           // Centered welcome text and paragraph
-          Center(
+          const Center(
             child: Column(
               mainAxisSize: MainAxisSize.min, // Center content vertically
               children: [
@@ -50,7 +52,7 @@ class SplashScreen extends StatelessWidget {
 
                 // Subtitle text (paragraph)
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  padding: EdgeInsets.symmetric(horizontal: 20.0),
                   child: Text(
                     'Your all-in-one solution for efficient team management and employee success. Optimize your workforce together!',
                     textAlign: TextAlign.center,

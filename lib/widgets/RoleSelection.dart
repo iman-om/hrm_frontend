@@ -1,5 +1,5 @@
+
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class RoleSelectionBox extends StatelessWidget {
   final String role;
@@ -9,13 +9,13 @@ class RoleSelectionBox extends StatelessWidget {
   final VoidCallback onTap;
 
   const RoleSelectionBox({
-    Key? key,
+    super.key,
     required this.role,
     // required this.description,
     required this.iconPath,
     required this.isSelected,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class RoleSelectionBox extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(10.0),
         decoration: BoxDecoration(
-          color:  Color.fromARGB(107, 224, 224, 224),
+          color:  const Color.fromARGB(107, 224, 224, 224),
           borderRadius: BorderRadius.circular(12.0),
           border: Border.all(
             color:
@@ -33,7 +33,7 @@ class RoleSelectionBox extends StatelessWidget {
           ),
           boxShadow: isSelected
               ? [
-                  BoxShadow(
+                  const BoxShadow(
                       color: Colors.black12,
                       blurRadius: 5.0,
                       spreadRadius: 2.0)
@@ -49,25 +49,23 @@ class RoleSelectionBox extends StatelessWidget {
                       0xFFFFC107), // You can replace with AppColors.yellowColor
                   radius: 25,
                 ),
-                Container(
-                  child: Center(
-                    child: Image(
-                      width: 50,
-                      height: 50,
-                      image: ExactAssetImage(iconPath),
-                      fit: BoxFit.contain,
-                    ),
+                Center(
+                  child: Image(
+                    width: 50,
+                    height: 50,
+                    image: ExactAssetImage(iconPath),
+                    fit: BoxFit.contain,
                   ),
                 ),
               ],
             ),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   role,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: 'WorkSans',
                     color:
                     //  r
