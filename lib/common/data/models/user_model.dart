@@ -16,7 +16,7 @@ class User {
   final int hrmConfigId;
   final String photo;
   final String status;
-  final String role;
+  String role;
   // Constructor
   User({
     required this.id,
@@ -36,7 +36,7 @@ class User {
     required this.hrmConfigId,
     required this.photo,
     required this.status,
-    required this.role,
+    this.role = 'employee',
   });
 
   // Factory method to create a User from JSON
@@ -50,7 +50,7 @@ class User {
       address: json['address'] ?? '',
       phone: json['phone'] ?? '',
       designation: json['designation'] ?? '',
-      departmentId: json['department_id'] ?? 0,  
+      departmentId: json['departement_id'] ?? 0,  
       gender: json['gender'] ?? '',
       bankName: json['bank_name'] ?? '',
       bankRIB: json['bank_RIB'] ?? '',
@@ -59,7 +59,7 @@ class User {
       hrmConfigId: json['hrm_config_id'] ?? 0,  
       photo: json['photo'] ?? '',  
       status: json['status'] ?? '', 
-      role: '', 
+       role: json['role'] ?? 'employee',
     );
   }
 
@@ -83,6 +83,7 @@ class User {
       'hrm_config_id': hrmConfigId,
       'photo': photo,
       'status': status,
+      'role': role,
     };
   }
 }

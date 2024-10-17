@@ -94,13 +94,12 @@ class ProfileController extends GetxController {
     hrmConfigId: 0,
     photo: '',
     status: '',
-    role: '', 
+    role: '',
   ).obs;
 
   var isLoading = false.obs;
   var errorMessage = ''.obs;
 
-  // Fetch the user profile using an HTTP request with token
   Future<void> fetchUserProfile(int userId) async {
     isLoading.value = true;
     errorMessage.value = '';
@@ -111,32 +110,49 @@ class ProfileController extends GetxController {
 
       if (token == null) {
         errorMessage.value = 'Token not found. User might not be authenticated.';
+        print(errorMessage.value);
         return;
       }
 
-      // Correctly append the userId to the URL
-      const String apiUrl = 'https://f4b6-105-235-128-52.ngrok-free.app/api/users'; // Base API URL
-      final String urlWithId = '$apiUrl/$userId'; // Construct URL with user ID
+      const String apiUrl = 'https://f4b6-105-235-128-52.ngrok-free.app/api/users'; 
+      final String urlWithId = '$apiUrl/$userId'; 
+
+      print('Making request to: $urlWithId');
+      print('Using token: $token');
 
       final response = await http.get(
-        Uri.parse(urlWithId), // Use the constructed URL with user ID
+        Uri.parse(urlWithId),
         headers: {
-          'Authorization': 'Bearer $token', // Pass token in header
+          'Authorization': 'Bearer $token', 
           'Accept': 'application/json',
         },
       );
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
-        userProfile.value = User.fromJson(data); // Update the user profile
+        print('Response data: $data');
+
+        userProfile.value = User.fromJson(data); 
       } else {
         errorMessage.value = 'Failed to load profile: ${response.statusCode}\n${response.body}';
+        print(errorMessage.value); 
       }
     } catch (error) {
       errorMessage.value = 'Error fetching user profile: $error';
+      print(errorMessage.value); 
     } finally {
       isLoading.value = false;
     }
   }
-}
+void assignUserRole(User user) {
+    if (user.email == 'assiatobal97@gmail.com') {
+      user.role = 'manager';  // Assign 'manager' role if email matches
+    } else {
+      user.role = 'employee'; // Otherwise, assign 'employee' role
+    }
 
+    print('Assigned role: ${user.role}');
+  }
+
+
+}
