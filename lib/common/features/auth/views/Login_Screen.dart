@@ -41,15 +41,15 @@ class LoginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 40),
-                  // Positioned logo at the top
-                  Positioned(
-                    child: Center(
-                      child: Image.asset(
-                        'assets/logos/logo.png',
-                        height: 100,
-                      ),
+
+                  // Logo at the top
+                  Center(
+                    child: Image.asset(
+                      'assets/logos/logo.png',
+                      height: 100,
                     ),
                   ),
+
                   const SizedBox(height: 40),
 
                   // Welcome Text
@@ -70,13 +70,12 @@ class LoginScreen extends StatelessWidget {
 
                   // Role Selection Box for Manager/ Admin/ Owner
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center, 
+                    mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Obx(
                         () => RoleSelectionBox(
                           role: 'Manager',
-                          // description: 'login',
                           iconPath: 'assets/icons/businessman.png',
                           isSelected:
                               roleSelectionController.selectedRole.value ==
@@ -88,11 +87,10 @@ class LoginScreen extends StatelessWidget {
                       ),
                       const SizedBox(width: 12),
 
-                      // Role Selection Box for Employer
+                      // Role Selection Box for Employee
                       Obx(
                         () => RoleSelectionBox(
                           role: 'Employee',
-                          // description: 'Register',
                           iconPath: 'assets/icons/employees.png',
                           isSelected:
                               roleSelectionController.selectedRole.value ==

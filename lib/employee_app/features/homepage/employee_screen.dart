@@ -124,9 +124,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hrm_front/common/data/values/colors.dart';
+import 'package:hrm_front/employee_app/widgets/employee_navbar.dart';
 import 'package:hrm_front/widgets/attendance_summary.dart';
 import 'package:hrm_front/widgets/custom_search_bar.dart';
-import 'package:hrm_front/widgets/employee_navbar.dart';
 import 'package:hrm_front/widgets/shortcut_button.dart';
 
 class EmployeeHomePage extends StatefulWidget {
@@ -225,7 +225,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ShortcutButton(title: 'My Profile', icon: Icons.person, onTap: () {  Get.toNamed(
-                      '/profileemployee'); },),
+                      '/employee_profile'); },),
                   ShortcutButton(
                       title: 'Request a leave', icon: Icons.assignment, onTap: () {  },),
                   ShortcutButton(

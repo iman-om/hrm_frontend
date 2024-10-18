@@ -237,7 +237,13 @@ import 'package:hrm_front/employee_app/widgets/custom_app_bar.dart';
 class EmployeeProfilePage extends StatelessWidget {
   final ProfileController profileController = Get.put(ProfileController());
 
-  EmployeeProfilePage({super.key});
+  EmployeeProfilePage({super.key}) {
+    // Fetch user profile when the page is created
+    // You should replace the user ID with the actual one based on your logic
+    int userId =
+    82; // Replace this with the appropriate logic to get the user ID
+    profileController.fetchUserProfile(userId);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -287,7 +293,6 @@ class EmployeeProfilePage extends StatelessWidget {
                         buildProfileDetail('Phone Number', userProfile.phone, 'assets/icons/phone.png'),
                         buildProfileDetail('Designation', userProfile.designation, 'assets/icons/posting.png'),
                         buildProfileDetail('Birthdate', userProfile.dateBirth, 'assets/icons/calendar.png'),
-                        buildProfileDetail('Gender', userProfile.gender, 'assets/icons/gender.png'),
                         buildProfileDetail('Bank Name', userProfile.bankName, 'assets/icons/bank.png'),
                         buildProfileDetail('Bank RIB', userProfile.bankRIB, 'assets/icons/card.png'),
                         buildProfileDetail('Social Security Number', userProfile.insuranceNumber, 'assets/icons/id-card.png'),
@@ -311,9 +316,12 @@ class EmployeeProfilePage extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 40,
-              backgroundImage: userProfile.photo.isNotEmpty
-                  ? NetworkImage(userProfile.photo) as ImageProvider
-                  : const AssetImage('assets/icons/employees.png'),
+              backgroundImage: userProfile.photo?.isNotEmpty == true
+                  ? NetworkImage(userProfile.photo!)
+              as ImageProvider // Added ! to indicate it's non-null at this point
+                  : const AssetImage(
+                  'assets/images/woman.jpg'), // Default image if photo is null or empty
+
             ),
             const SizedBox(width: 16),
             Column(
@@ -379,45 +387,45 @@ class EmployeeProfilePage extends StatelessWidget {
 
   Widget buildProfileDetail(String title, String value, String iconPath) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-              fontFamily: AppConstants.fontApp,
-            ),
-          ),
-          const SizedBox(height: 4),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            decoration: BoxDecoration(
-              color: AppColors.whiteColor,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: Colors.black),
-            ),
-            child: Row(
-              children: [
-                Image.asset(iconPath, height: 40, width: 40),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Text(
-                    value.isNotEmpty ? value : 'Not provided', // Handle empty values
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontFamily: AppConstants.fontApp,
-                    ),
-                  ),
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontFamily: AppConstants.fontApp,
                 ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+              ),
+              const SizedBox(height: 4),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                decoration: BoxDecoration(
+                  color: AppColors.whiteColor,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.black),
+                ),
+                child: Row(
+                  children: [
+                    Image.asset(iconPath, height: 40, width: 40),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        value.isNotEmpty ? value : 'Not provided', // Handle empty values
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontFamily: AppConstants.fontApp,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+           ),
+        );
+   }
 }

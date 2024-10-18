@@ -1,40 +1,41 @@
+
 class User {
-  final int id;
-  final bool isAdmin;
+  final int id; 
   final String firstName;
   final String lastName;
   final String email;
   final String address;
   final String phone;
+  //final Bool gender;
   final String designation;
-  final int departmentId;
-  final String gender;
+  final int departmentId; 
   final String bankName;
   final String bankRIB;
   final String insuranceNumber;
   final String dateBirth;
-  final int hrmConfigId;
-  final String photo;
-  final String status;
+  final String? hrmConfigId; 
+  final String? photo; 
+  final int status; 
   String role;
+
+
   // Constructor
   User({
     required this.id,
-    required this.isAdmin,
     required this.firstName,
     required this.lastName,
     required this.email,
     required this.address,
     required this.phone,
+    //required this.gender,
     required this.designation,
     required this.departmentId,
-    required this.gender,
     required this.bankName,
     required this.bankRIB,
     required this.insuranceNumber,
     required this.dateBirth,
-    required this.hrmConfigId,
-    required this.photo,
+    this.hrmConfigId, // Nullable
+    this.photo, // Nullable
     required this.status,
     this.role = 'employee',
   });
@@ -42,24 +43,26 @@ class User {
   // Factory method to create a User from JSON
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      id: json['id'] ?? 0,  
-      isAdmin: json['is_admin'] ?? false,  
-      firstName: json['first_name'] ?? '',  
+      id: json['id'] ?? 0,
+      // Handle null case by providing default value
+      firstName: json['first_name'] ?? '',
       lastName: json['last_name'] ?? '',
       email: json['email'] ?? '',
       address: json['address'] ?? '',
       phone: json['phone'] ?? '',
+      //gender: json['gender'] ?? '',
       designation: json['designation'] ?? '',
-      departmentId: json['departement_id'] ?? 0,  
-      gender: json['gender'] ?? '',
+      departmentId: json['department_id'] ?? 0,
       bankName: json['bank_name'] ?? '',
       bankRIB: json['bank_RIB'] ?? '',
       insuranceNumber: json['insurance_number'] ?? '',
       dateBirth: json['date_birth'] ?? '',
-      hrmConfigId: json['hrm_config_id'] ?? 0,  
-      photo: json['photo'] ?? '',  
-      status: json['status'] ?? '', 
-       role: json['role'] ?? 'employee',
+      hrmConfigId: json['hrm_config_id'],
+      photo: json['photo'],
+      // Nullable
+      status: json['status'] ?? 0,
+      // Handle as int
+      role: json['role'] ?? 'employee',
     );
   }
 
@@ -67,7 +70,6 @@ class User {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'is_admin': isAdmin,
       'first_name': firstName,
       'last_name': lastName,
       'email': email,
@@ -75,7 +77,6 @@ class User {
       'phone': phone,
       'designation': designation,
       'department_id': departmentId,
-      'gender': gender,
       'bank_name': bankName,
       'bank_RIB': bankRIB,
       'insurance_number': insuranceNumber,

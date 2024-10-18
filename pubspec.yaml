@@ -69,6 +69,7 @@ flutter:
   assets:
     - assets/images/splash.jpg
     - assets/images/splash2.jpg
+    - assets/images/woman.jpg
     - assets/logos/logo.png
     - assets/icons/businessman.png
     - assets/icons/employees.png
@@ -83,7 +84,6 @@ flutter:
     - assets/icons/address.png
     - assets/icons/arrow.png
     - assets/icons/edit.png
-
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
