@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hrm_front/common_features/auth/data/values/colors.dart';
+import 'package:hrm_front/manager_app/widgets/manager_navbar.dart';
 import 'package:hrm_front/widgets/attendance_summary.dart';
 import 'package:hrm_front/widgets/custom_search_bar.dart';
-import 'package:hrm_front/widgets/employee_navbar.dart';
+import 'package:hrm_front/common/data/values/colors.dart';
 import 'package:hrm_front/widgets/shortcut_button.dart';
 
 class ManagerHomePage extends StatefulWidget {
+  const ManagerHomePage({super.key});
+
   @override
-  _ManagerHomePageState createState() => _ManagerHomePageState();
+  _ManagerHomePageState createState() {
+    return _ManagerHomePageState();
+  }
 }
 
 class _ManagerHomePageState extends State<ManagerHomePage> {
@@ -101,11 +105,17 @@ class _ManagerHomePageState extends State<ManagerHomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ShortcutButton(title: 'My Profile', icon: Icons.person),
                   ShortcutButton(
-                      title: 'Request a leave', icon: Icons.assignment),
+                    title: 'My Profile', 
+                    icon: Icons.person, 
+                    onTap: () {  
+                      Get.toNamed('/manager_profile');
+                    },
+                  ),
                   ShortcutButton(
-                      title: 'Company Directory', icon: Icons.contact_page),
+                      title: 'Request a leave', icon: Icons.assignment, onTap: () {  },),
+                  ShortcutButton(
+                      title: 'Company Directory', icon: Icons.contact_page, onTap: () {  },),
                 ],
               ),
             ],
@@ -113,7 +123,7 @@ class _ManagerHomePageState extends State<ManagerHomePage> {
         ),
       ),
       // Bottom Navigation Bar
-      bottomNavigationBar: EmployeeBottomNavigationBar(
+      bottomNavigationBar: ManagerBottomNavigationBar(
         selectedIndex: _selectedIndex,
         onItemSelected: _onItemTapped,
       ),

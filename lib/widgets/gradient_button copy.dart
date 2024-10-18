@@ -7,12 +7,12 @@ class GradientButton extends StatelessWidget {
   final double height;
 
   const GradientButton({
-    Key? key,
+    super.key,
     required this.text,
     required this.onTap,
     this.width = 250, // Default width
     this.height = 40, // Default height
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class GradientButton extends StatelessWidget {
         height: height,
         child: Container(
           decoration: BoxDecoration(
-            gradient: RadialGradient(
+            gradient: const RadialGradient(
               colors: [
                 Color(0xFFFF0000),
                 Color(0xFFCC0000),
@@ -34,7 +34,7 @@ class GradientButton extends StatelessWidget {
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.5),
-                offset: Offset(0, 4), // Shadow position
+                offset: const Offset(0, 4), // Shadow position
                 blurRadius: 8, // Shadow blur
               ),
             ],
@@ -43,7 +43,7 @@ class GradientButton extends StatelessWidget {
           child: Center(
             child: Text(
               text,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 18,
                 fontWeight: FontWeight.bold,

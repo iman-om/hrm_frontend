@@ -6,7 +6,7 @@ class AttendanceStatus extends StatelessWidget {
   final String count;
   final String status;
 
-  const AttendanceStatus({
+  const AttendanceStatus({super.key, 
     required this.count,
     required this.status,
   });
@@ -17,11 +17,11 @@ class AttendanceStatus extends StatelessWidget {
       children: [
         Text(
           count,
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),
+          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),
         ),
         Text(
           status,
-          style: TextStyle(fontSize: 14, color: Colors.black),
+          style: const TextStyle(fontSize: 14, color: Colors.black),
         ),
       ],
     );

@@ -4,19 +4,22 @@ import 'package:flutter/material.dart';
 class ShortcutButton extends StatelessWidget {
   final String title;
   final IconData icon;
+  final VoidCallback onTap;
 
   const ShortcutButton({
     required this.title,
     required this.icon,
-    Key? key,
-  }) : super(key: key);
+    required this.onTap,
+
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: Colors.white,
             shape: BoxShape.circle,
@@ -30,10 +33,10 @@ class ShortcutButton extends StatelessWidget {
           ),
           child: Icon(icon, color: Colors.blue),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Text(
           title,
-          style: TextStyle(fontSize: 12, color: Colors.black),
+          style: const TextStyle(fontSize: 12, color: Colors.black),
         ),
       ],
     );
