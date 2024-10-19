@@ -8,6 +8,8 @@ import 'package:hrm_front/employee_app/features/profile/view/view.dart';
 import 'package:hrm_front/manager_app/features/homepage/manager_home.dart';
 import 'package:hrm_front/manager_app/features/profile/controller/manager_profile_controller.dart';
 
+import 'manager_app/features/profile/view/view.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -33,13 +35,8 @@ class MyApp extends StatelessWidget {
             Get.lazyPut<ProfileController>(() => ProfileController());
           }),
         ),
-        GetPage(
-            name: '/manager_profile',
-            page: () => const ManagerHomePage(),
-            binding: BindingsBuilder(() {
-              Get.lazyPut<ManagerProfileController>(
-                  () => ManagerProfileController());
-            })),
+        GetPage(name: '/manager_profile', page: () => ManagerProfilePage()),
+
       ],
     );
   }

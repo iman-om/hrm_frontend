@@ -10,9 +10,7 @@ class ManagerProfilePage extends StatelessWidget {
   final ManagerProfileController profileController = Get.put(ManagerProfileController());
 
   ManagerProfilePage({super.key}) {
-    // Fetch user profile when the page is created
-    // Replace with the logic to dynamically fetch userId if needed
-    int userId = 1; // Adjust logic to get the actual user ID
+    int userId = 1;
     profileController.fetchUserProfile(userId);
   }
 
