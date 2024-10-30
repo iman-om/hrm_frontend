@@ -12,11 +12,9 @@ import 'package:hrm_front/widgets/gradient_button copy.dart';
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
-  // Get instance of the authentication controller
   final AuthenticationController authController =
       Get.put(AuthenticationController());
 
-  // Controllers for email and password text fields
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final RoleSelectionController roleSelectionController =
@@ -31,7 +29,7 @@ class LoginScreen extends StatelessWidget {
             width: double.infinity,
             decoration: const BoxDecoration(
               gradient:
-                  AppColors.gradientBackground, // Apply gradient background
+                  AppColors.gradientBackground, 
             ),
           ),
           Center(
@@ -42,7 +40,6 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   const SizedBox(height: 40),
 
-                  // Logo at the top
                   Center(
                     child: Image.asset(
                       'assets/logos/logo.png',
@@ -57,18 +54,17 @@ class LoginScreen extends StatelessWidget {
                     'Kickstart Your Adventure: Pick Your Role!',
                     style: TextStyle(
                       color:
-                          AppColors.blackColor, // Use the defined black color
+                          AppColors.blackColor, 
                       fontSize: 22,
-                      fontWeight: FontWeight.bold, // Bold text for emphasis
+                      fontWeight: FontWeight.bold, 
                       fontFamily: 'Montserrat',
                       fontStyle: FontStyle.italic,
                     ),
-                    textAlign: TextAlign.center, // Center align the text
+                    textAlign: TextAlign.center,
                   ),
 
                   const SizedBox(height: 50),
 
-                  // Role Selection Box for Manager/ Admin/ Owner
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -87,7 +83,6 @@ class LoginScreen extends StatelessWidget {
                       ),
                       const SizedBox(width: 12),
 
-                      // Role Selection Box for Employee
                       Obx(
                         () => RoleSelectionBox(
                           role: 'Employee',
@@ -104,7 +99,6 @@ class LoginScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
 
-                  // Email TextField
                   InputWidget(
                     hintText: 'E-mail',
                     controller: _emailController,
@@ -113,7 +107,6 @@ class LoginScreen extends StatelessWidget {
 
                   const SizedBox(height: 20),
 
-                  // Password TextField with Toggle Visibility
                   Obx(() {
                     return InputWidget(
                       hintText: 'Password',
@@ -143,11 +136,11 @@ class LoginScreen extends StatelessWidget {
                               style: const TextStyle(
                                 color: Colors.red,
                                 fontWeight:
-                                    FontWeight.bold, // Make error text bold
+                                    FontWeight.bold, 
                                 fontFamily: 'AppFontFamily',
                               ),
                               textAlign: TextAlign
-                                  .center, // Center align the error message
+                                  .center, 
                             ),
                           )
                         : Container();
@@ -162,12 +155,11 @@ class LoginScreen extends StatelessWidget {
                           ? 'Loading...'
                           : 'Sign in',
                       onTap: authController.isLoading.value
-                          ? () {} // Disable action when loading
+                          ? () {} 
                           : () {
                               String selectedRole =
                                   roleSelectionController.selectedRole.value;
 
-                              // Attempt to log in
                               authController.login(
                                 _emailController.text,
                                 _passwordController.text,

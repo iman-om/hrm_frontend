@@ -49,7 +49,7 @@ class InputWidget extends StatelessWidget {
     required this.obscureText,
     required this.controller,
     this.suffixIcon,
-    this.errorText, // Optional error text
+    this.errorText, 
   });
 
   @override

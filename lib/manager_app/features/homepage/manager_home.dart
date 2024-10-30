@@ -180,9 +180,9 @@ class _ManagerHomePageState extends State<ManagerHomePage> {
         ), // Dynamically display the user's first name
         backgroundColor: Colors.black,
         toolbarHeight: 80.0,
-        actions: [
+        actions: const [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(8.0),
             child: CircleAvatar(
               backgroundColor: Colors.black,
               child: Icon(Icons.person, color: Colors.white),

@@ -135,12 +135,11 @@ class EmployeeHomePage extends StatefulWidget {
 }
 
 class _EmployeeHomePageState extends State<EmployeeHomePage> {
-  int _selectedIndex = 0; // Initialize selected index
+  int _selectedIndex = 0; 
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
-      // You can add navigation logic here based on the selected index
     });
   }
 
@@ -152,7 +151,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
         title: Text(
               "Hello Employee!",
               style: const TextStyle(color: Colors.white),
-            ), // Dynamically display the user's first name
+            ), 
         backgroundColor: Colors.black,
         toolbarHeight: 80.0,
         actions: [
@@ -176,13 +175,11 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Search Bar
               CustomSearchBar(
                 onAddPressed: () {
                   print('Add button pressed');
                 },
               ),
-              // Attendance Header with "View" Button
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -191,7 +188,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white), // Adjusted text color
+                        color: Colors.white), 
                   ),
                   TextButton(
                     onPressed: () {
@@ -206,21 +203,18 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                 ],
               ),
 
-              // Attendance Summary
               AttendanceSummary(),
               SizedBox(height: 20),
 
-              // Shortcuts Section
               Text(
                 'SHORTCUTS',
                 style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white), // Adjusted text color
+                    color: Colors.white),
               ),
               SizedBox(height: 10),
 
-              // Shortcuts Row
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -236,7 +230,6 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
           ),
         ),
       ),
-      // Bottom Navigation Bar
       bottomNavigationBar: EmployeeBottomNavigationBar(
         selectedIndex: _selectedIndex,
         onItemSelected: _onItemTapped,

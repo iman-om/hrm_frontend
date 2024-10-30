@@ -36,7 +36,6 @@ class MyApp extends StatelessWidget {
           }),
         ),
         GetPage(name: '/manager_profile', page: () => ManagerProfilePage()),
-
       ],
     );
   }
