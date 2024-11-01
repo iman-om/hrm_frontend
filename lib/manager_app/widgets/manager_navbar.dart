@@ -31,6 +31,9 @@ class ManagerBottomNavigationBar extends StatelessWidget {
         if (index == 4) { 
           Get.toNamed('/manager_profile');
         }
+        if(index == 2 ){
+          Get.toNamed('/qr-scanner');
+        }
       },
     );
   }

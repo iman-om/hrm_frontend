@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hrm_front/common/features/qr_code/qr_code_scanner/qr_code_scanner_controller.dart';
+import 'package:http/http.dart';
+
 
 class EmployeeBottomNavigationBar extends StatelessWidget {
   final int selectedIndex;
@@ -30,6 +33,9 @@ class EmployeeBottomNavigationBar extends StatelessWidget {
 
         if (index == 4) { // Profile tab is the 4th item (index 4)
           Get.toNamed('/employee_profile');
+        }
+        if(index == 2 ){
+          Get.toNamed('/qr-scanner');
         }
       },
     );
