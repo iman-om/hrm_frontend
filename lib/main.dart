@@ -7,8 +7,9 @@ import 'package:hrm_front/employee_app/features/profile/controller/profile_contr
 import 'package:hrm_front/employee_app/features/profile/view/view.dart';
 import 'package:hrm_front/manager_app/features/homepage/manager_home.dart';
 import 'package:hrm_front/manager_app/features/profile/controller/manager_profile_controller.dart';
-
 import 'common/features/qr_code/qr_code_scanner/qr_code_scanner_screen.dart';
+import 'manager_app/features/profile/view/view.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -42,8 +43,8 @@ class MyApp extends StatelessWidget {
               Get.lazyPut<ManagerProfileController>(
                   () => ManagerProfileController());
             })),
+        GetPage(name: '/manager_profile', page: () => ManagerProfilePage()),
         GetPage(name: '/qr-scanner', page: () => QRCodeScannerScreen()),
-
       ],
     );
   }

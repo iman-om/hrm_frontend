@@ -28,7 +28,7 @@ class ManagerBottomNavigationBar extends StatelessWidget {
       onTap: (index) {
         onItemSelected(index);
 
-        if (index == 4) { // Profile tab is the 4th item (index 4)
+        if (index == 4) { 
           Get.toNamed('/manager_profile');
         }
         if(index == 2 ){

@@ -10,19 +10,16 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          // Background image
           SizedBox.expand(
             child: Image.asset(
-              'assets/images/splash2.jpg', // Update this with your image asset path
+              'assets/images/splash2.jpg', 
               fit: BoxFit.cover,
             ),
           ),
-          // Black overlay with 40% opacity
           Container(
             color: Colors.black.withOpacity(0.4),
           ),
 
-          // HRM Pro Logo
           Positioned(
             top: 50,
             right: 20,
@@ -32,12 +29,10 @@ class SplashScreen extends StatelessWidget {
             ),
           ),
 
-          // Centered welcome text and paragraph
           const Center(
             child: Column(
-              mainAxisSize: MainAxisSize.min, // Center content vertically
+              mainAxisSize: MainAxisSize.min, 
               children: [
-                // Welcome text
                 Text(
                   'Welcome to HRM Pro!',
                   style: TextStyle(
@@ -50,7 +45,6 @@ class SplashScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
 
-                // Subtitle text (paragraph)
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.0),
                   child: Text(
@@ -68,7 +62,6 @@ class SplashScreen extends StatelessWidget {
             ),
           ),
 
-          // Positioned Next button at the bottom
           Positioned(
             bottom: 50.0,
             left: 0,
@@ -78,7 +71,7 @@ class SplashScreen extends StatelessWidget {
                 text: 'Next',
                 onTap: () {
                   Get.toNamed(
-                      '/login'); // Ensure the login route is properly defined in GetX
+                      '/login'); 
                 },
                 width: 250,
                 height: 40,

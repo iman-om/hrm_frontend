@@ -11,4 +11,6 @@ class Endpoints {
 
   // Profile-related routes
   static String getUserProfile(int userId) => '$baseUrl/users/$userId';
+  static String getEmployees() => '$baseUrl/users';
+
 }

@@ -150,7 +150,7 @@
 
 
 
-import 'dart:convert'; // For JSON decoding
+import 'dart:convert'; 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:hrm_front/common/data/models/user_model.dart';
@@ -196,7 +196,6 @@ class ProfileController extends GetxController {
         return;
       }
 
-      // Use the correct method from Endpoints
       final String urlWithId = Endpoints.getUserProfile(userId);
 
       print('Fetching profile for userId: $userId');
@@ -237,9 +236,9 @@ class ProfileController extends GetxController {
 
   void assignUserRole(User user) {
     if (user.email == 'assiatobal97@gmail.com') {
-      user.role = 'manager';  // Assign 'manager' role if email matches
+      user.role = 'manager';  
     } else {
-      user.role = 'employee'; // Otherwise, assign 'employee' role
+      user.role = 'employee'; 
     }
 
     print('Assigned role: ${user.role}');

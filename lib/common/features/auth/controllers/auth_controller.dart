@@ -104,13 +104,12 @@ class AuthenticationController extends GetxController {
   final errorMessage = ''.obs;
   final passwordVisible = false.obs;
 
-  // Login Method
   Future<void> login(String email, String password, String role) async {
     try {
       isLoading.value = true;
       errorMessage.value = '';
 
-      final String apiUrl = Endpoints.loginEmployee(); // Use Endpoints for login
+      final String apiUrl = Endpoints.loginEmployee(); 
 
       final response = await http.post(
         Uri.parse(apiUrl),
@@ -127,15 +126,15 @@ class AuthenticationController extends GetxController {
       if (response.statusCode == 201 || response.statusCode == 200) {
         final data = json.decode(response.body);
 
-        // Ensure 'token' exists in response
+
         if (data['token'] != null) {
           String token = data['token'];
 
-          // Save token in SharedPreferences
+
           SharedPreferences prefs = await SharedPreferences.getInstance();
           await prefs.setString('authtoken', token);
 
-          // Navigate based on role and email
+
           if (role == 'Manager' && email == 'assiatobal97@gmail.com') {
              Get.off(() => ManagerHomePage());
           } else if (role == 'Employee') {
@@ -156,20 +155,17 @@ class AuthenticationController extends GetxController {
     }
   }
 
-  // Retrieve token method
   Future<String?> getToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString('authtoken');
   }
 
-  // Logout Method
   Future<void> logout() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.remove('authtoken');
     Get.offAll(() => LoginScreen());
   }
 
-  // Method to toggle password visibility
   void togglePasswordVisibility() {
     passwordVisible.value = !passwordVisible.value;
   }
