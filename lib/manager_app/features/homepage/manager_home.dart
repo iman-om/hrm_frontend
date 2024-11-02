@@ -143,9 +143,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hrm_front/manager_app/features/employees_detail/view/employees_detail_screen.dart';
 import 'package:hrm_front/manager_app/features/homepage/widgets/Shortcuts.dart';
 import 'package:hrm_front/manager_app/features/homepage/widgets/employee_list.dart';
 import 'package:hrm_front/manager_app/widgets/manager_navbar.dart';
+import 'package:hrm_front/manager_app/widgets/sidebar_menu.dart';
 import 'package:hrm_front/widgets/attendance_summary.dart';
 import 'package:hrm_front/widgets/custom_search_bar.dart';
 import 'package:hrm_front/common/data/values/colors.dart';
@@ -160,12 +162,11 @@ class ManagerHomePage extends StatefulWidget {
 }
 
 class _ManagerHomePageState extends State<ManagerHomePage> {
-  int _selectedIndex = 0; // Initialize selected index
+  int _selectedIndex = 0; 
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
-      // You can add navigation logic here based on the selected index
     });
   }
 
@@ -174,15 +175,15 @@ class _ManagerHomePageState extends State<ManagerHomePage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text(
-          "Hello Manager!",
-          style: const TextStyle(color: Colors.white),
-        ), // Dynamically display the user's first name
+        title: const Text(
+          "Hello Manager",
+          style: TextStyle(color: Colors.white),
+        ), 
         backgroundColor: Colors.black,
         toolbarHeight: 80.0,
         actions: const [
           Padding(
-          padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: CircleAvatar(
               backgroundColor: Colors.black,
               child: Icon(Icons.person, color: Colors.white),
@@ -190,6 +191,8 @@ class _ManagerHomePageState extends State<ManagerHomePage> {
           ),
         ],
       ),
+      drawer: SidebarMenu(),
+
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -207,7 +210,6 @@ class _ManagerHomePageState extends State<ManagerHomePage> {
                   print('Add button pressed');
                 },
               ),
-              // Attendance Header with "View" Button
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -216,14 +218,13 @@ class _ManagerHomePageState extends State<ManagerHomePage> {
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black), // Adjusted text color
+                        color: Colors.black), 
                   ),
                   TextButton(
                     onPressed: () {
-                      // Navigate to Attendance Detail Screen
-                      // Example: Get.to(() => EmployeeDetailScreen());
+                      Get.to(() => EmployeeDetailsPage());
                     },
-                    child: Text(
+                    child: const Text(
                       'view All',
                       style: TextStyle(color: Colors.red),
                     ),
@@ -231,34 +232,40 @@ class _ManagerHomePageState extends State<ManagerHomePage> {
                 ],
               ),
 
-              // Horizontal scrollable Employee Summary
-              SizedBox(
-                height: 150, // Adjust height according to your widget size
+              const SizedBox(
+                height: 150, 
                 child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal, // Enables horizontal scrolling
+                  scrollDirection:
+                      Axis.horizontal, 
                   child: Row(
-                    children: const [
+                    children: [
                       EmployeeSummaryWidget(
                         employeeName: 'John Doe',
-                        role: 'Software Engineer',
-                        department: 'IT',
-                        photoUrl:'assets/images/woman.png' ,
+                        role: 'developer',
+                        department: '2',
+                        photoUrl: 'assets/images/man4.jpg',
                       ),
-                      SizedBox(width: 16), // Spacing between employee widgets
-                      EmployeeSummaryWidget(
-                        employeeName: 'Jane Smith',
-                        role: 'Project Manager',
-                        department: 'Operations',
-                        photoUrl:'assets/images/woman.png' ,
+                      SizedBox(width: 16),
+                       EmployeeSummaryWidget(
+                        employeeName: 'Alice Smith',
+                        role: 'Data Analyst',
+                        department: '4',
+                        photoUrl: 'assets/images/woman2.jpg',
                       ),
                       SizedBox(width: 16),
                       EmployeeSummaryWidget(
-                        employeeName: 'Alice Johnson',
-                        role: 'HR Manager',
-                        department: 'Human Resources',
-                        photoUrl:'assets/images/woman.png' ,
+                        employeeName: 'Bob Brown',
+                        role: 'consultant',
+                        department: '5',
+                        photoUrl: 'assets/images/man2.jpg',
                       ),
-                      // Add more EmployeeSummaryWidgets as needed
+                      SizedBox(width: 16),
+                      EmployeeSummaryWidget(
+                        employeeName: 'Charlie Davis',
+                        role: 'intern',
+                        department: '4',
+                        photoUrl: 'assets/images/man1.jpg',
+                      ),
                     ],
                   ),
                 ),
@@ -272,17 +279,16 @@ class _ManagerHomePageState extends State<ManagerHomePage> {
                 style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black), // Adjusted text color
+                    color: Colors.black), 
               ),
               SizedBox(height: 10),
 
-              // Add ShortcutsWidget here
-      ShortcutsWidget(
-      numberOfDepartments: 5,
-      numberOfEmployees: 120,
-        companyPolicy: "Updated Sept 10",
-        latestContracts: "3 new contracts",
-      ),
+              ShortcutsWidget(
+                numberOfDepartments: 5,
+                numberOfEmployees: 10,
+                companyPolicy: "Updated Sept 10",
+                latestContracts: "3 new contracts",
+              ),
             ],
           ),
         ),

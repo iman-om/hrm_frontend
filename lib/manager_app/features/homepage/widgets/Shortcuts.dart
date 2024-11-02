@@ -20,7 +20,6 @@ class ShortcutsWidget extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
-          // First Row (Departments, Employees)
           Row(
             children: [
               Expanded(
@@ -30,7 +29,7 @@ class ShortcutsWidget extends StatelessWidget {
                   icon: Icons.apartment,
                 ),
               ),
-              const SizedBox(width: 16), // Add spacing between cards
+              const SizedBox(width: 16), 
               Expanded(
                 child: _buildShortcutCard(
                   title: "Employees",
@@ -41,7 +40,6 @@ class ShortcutsWidget extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16.0),
-          // Second Row (Company Policy, Latest Contracts)
           Row(
             children: [
               Expanded(
@@ -51,7 +49,7 @@ class ShortcutsWidget extends StatelessWidget {
                   icon: Icons.policy,
                 ),
               ),
-              const SizedBox(width: 16), // Add spacing between cards
+              const SizedBox(width: 16), 
               Expanded(
                 child: _buildShortcutCard(
                   title: "Latest Contracts",
@@ -66,22 +64,20 @@ class ShortcutsWidget extends StatelessWidget {
     );
   }
 
-  // Helper function to build each shortcut card
   Widget _buildShortcutCard({
     required String title,
     required String value,
     required IconData icon,
   }) {
     return Card(
-      elevation: 8, // Adds shadow for depth
-      color: Colors.grey[850], // Darker grey for better contrast
+      elevation: 8, 
+      color: Colors.grey[850], 
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.0), // More rounded corners
+        borderRadius: BorderRadius.circular(16.0), 
       ),
-      child: InkWell( // Adds tap effect
+      child: InkWell( 
         borderRadius: BorderRadius.circular(16.0),
         onTap: () {
-          // Define tap action if needed
         },
         child: Container(
           padding: const EdgeInsets.all(16.0),
@@ -108,7 +104,7 @@ class ShortcutsWidget extends StatelessWidget {
                 Text(
                   value,
                   style: const TextStyle(
-                    color: Colors.white70, // Lighter text color for value
+                    color: Colors.white70, 
                     fontSize: 14,
                   ),
                   textAlign: TextAlign.center,

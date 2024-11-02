@@ -29,7 +29,7 @@ class RoleSelectionBox extends StatelessWidget {
           border: Border.all(
             color:
                 isSelected ? Colors.black : Colors.grey, 
-            width: 1.0, // Border width
+            width: 1.0, 
           ),
           boxShadow: isSelected
               ? [
@@ -37,7 +37,7 @@ class RoleSelectionBox extends StatelessWidget {
                       color: Colors.black12,
                       blurRadius: 5.0,
                       spreadRadius: 2.0)
-                ] // Shadow for selected
+                ] 
               : null,
         ),
         child: Row(
@@ -46,7 +46,7 @@ class RoleSelectionBox extends StatelessWidget {
               children: [
                 const CircleAvatar(
                   backgroundColor: Color(
-                      0xFFFFC107), // You can replace with AppColors.yellowColor
+                      0xFFFFC107),
                   radius: 25,
                 ),
                 Center(
@@ -74,15 +74,7 @@ class RoleSelectionBox extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                // Text(
-                //   description,
-                //   style: const TextStyle(
-                //     fontFamily: 'WorkSans',
-                //     color:
-                //         Color(0xFFFFC107), // Replace with AppColors.yellowColor
-                //     fontSize: 14,
-                //   ),
-                // ),
+                
               ],
             ),
           ],

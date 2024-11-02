@@ -124,7 +124,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hrm_front/common/data/values/colors.dart';
+import 'package:hrm_front/employee_app/features/company_policy/companypolicy.dart';
 import 'package:hrm_front/employee_app/widgets/employee_navbar.dart';
+import 'package:hrm_front/employee_app/widgets/sidebar_menu.dart';
 import 'package:hrm_front/widgets/attendance_summary.dart';
 import 'package:hrm_front/widgets/custom_search_bar.dart';
 import 'package:hrm_front/widgets/shortcut_button.dart';
@@ -135,7 +137,7 @@ class EmployeeHomePage extends StatefulWidget {
 }
 
 class _EmployeeHomePageState extends State<EmployeeHomePage> {
-  int _selectedIndex = 0; 
+  int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -149,9 +151,9 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(
-              "Hello Employee!",
-              style: const TextStyle(color: Colors.white),
-            ), 
+          "Hello Employee!",
+          style: const TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.black,
         toolbarHeight: 80.0,
         actions: [
@@ -164,6 +166,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
           ),
         ],
       ),
+      drawer: SidebarMenu(),
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -186,9 +189,10 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                   Text(
                     'ATTENDANCE',
                     style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white), 
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                   TextButton(
                     onPressed: () {
@@ -202,28 +206,44 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                   ),
                 ],
               ),
-
               AttendanceSummary(),
               SizedBox(height: 20),
-
               Text(
                 'SHORTCUTS',
                 style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
               ),
               SizedBox(height: 10),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ShortcutButton(title: 'My Profile', icon: Icons.person, onTap: () {  Get.toNamed(
-                      '/employee_profile'); },),
-                  ShortcutButton(
-                      title: 'Request a leave', icon: Icons.assignment, onTap: () {  },),
-                  ShortcutButton(
-                      title: 'Company Directory', icon: Icons.contact_page, onTap: () {  },),
+                  GestureDetector(                 
+                    child: ShortcutButton(
+                      title: 'My Profile',
+                      icon: Icons.person,
+                      onTap: () {
+                      Get.toNamed('/employee_profile');
+                    },
+                    ),
+                  ),
+                  GestureDetector(
+                    child: ShortcutButton(
+                      title: 'Request a leave',
+                      icon: Icons.assignment,
+                      onTap: () {},
+                    ),
+                  ),
+                  GestureDetector(
+                    child: ShortcutButton(
+                      title: 'Company Policies',
+                      icon: Icons.contact_page,
+                      onTap: () { Get.toNamed(
+                      '/policies');},
+                    ),
+                  ),
                 ],
               ),
             ],

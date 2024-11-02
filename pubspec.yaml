@@ -71,7 +71,16 @@ flutter:
   assets:
     - assets/images/splash.jpg
     - assets/images/splash2.jpg
-    - assets/images/woman.jpg
+    - assets/images/background.jpg
+    - assets/images/woman1.jpg
+    - assets/images/woman2.jpg
+    - assets/images/woman3.jpg
+    - assets/images/woman4.jpg
+    - assets/images/woman5.jpg
+    - assets/images/man1.jpg
+    - assets/images/man2.jpg
+    - assets/images/man3.jpg
+    - assets/images/man4.jpg
     - assets/logos/logo.png
     - assets/icons/businessman.png
     - assets/icons/employees.png

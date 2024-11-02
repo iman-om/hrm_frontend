@@ -9,10 +9,9 @@ class UserApi {
       final response = await http.get(Uri.parse('${Endpoints.baseUrl}/users'));
 
       if (response.statusCode == 200) {
-        List<dynamic> data = jsonDecode(response.body);
-
-        // Parse the data into a list of User objects
-        List<User> users = data.map<User>((user) => User.fromJson(user)).toList();
+        List<dynamic> data = jsonDecode(response.body)['data'];
+        List<User> users =
+            data.map<User>((user) => User.fromJson(user)).toList();
 
         return users;
       } else {

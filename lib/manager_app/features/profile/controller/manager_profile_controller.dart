@@ -34,7 +34,7 @@ class ManagerProfileController extends GetxController {
 
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      String? token = prefs.getString('authtoken'); // Retrieve token
+      String? token = prefs.getString('authtoken'); 
 
       print('Token retrieved: $token');
 

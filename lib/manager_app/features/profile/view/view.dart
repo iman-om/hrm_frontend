@@ -20,7 +20,7 @@ class ManagerProfilePage extends StatelessWidget {
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
-          gradient: AppColors.gradientBackground, // Apply gradient background
+          gradient: AppColors.gradientBackground, 
         ),
         child: Column(
           children: [

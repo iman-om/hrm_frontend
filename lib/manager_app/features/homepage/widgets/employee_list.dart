@@ -4,7 +4,7 @@ class EmployeeSummaryWidget extends StatelessWidget {
   final String employeeName;
   final String role;
   final String department;
-  final String photoUrl; // For employee photo
+  final String photoUrl;
 
   const EmployeeSummaryWidget({
     Key? key,
@@ -20,7 +20,7 @@ class EmployeeSummaryWidget extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
       ),
-      color: Color(0xFF1C1E24), // Background color as per your app palette
+      color: Color(0xFF1C1E24),
       elevation: 5,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -28,7 +28,7 @@ class EmployeeSummaryWidget extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 30,
-              backgroundImage: NetworkImage(photoUrl), // Employee photo
+              backgroundImage: AssetImage(photoUrl),
             ),
             SizedBox(width: 20),
             Column(
@@ -58,7 +58,6 @@ class EmployeeSummaryWidget extends StatelessWidget {
                     fontSize: 16,
                   ),
                 ),
-
               ],
             ),
           ],

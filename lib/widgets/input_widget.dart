@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 
 class InputWidgets extends StatelessWidget {
   final String hintText;
-  final String? labelText; // Added for label text
+  final String? labelText; 
   final bool obscureText;
   final TextEditingController controller;
   final Widget? suffixIcon;
-  final String? errorText; // Added for error text display
 
   const InputWidgets({
     super.key,
@@ -15,7 +14,6 @@ class InputWidgets extends StatelessWidget {
     required this.obscureText,
     required this.controller,
     this.suffixIcon,
-    this.errorText, // Optional error text
   });
 
   @override
@@ -37,10 +35,8 @@ class InputWidgets extends StatelessWidget {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(
-              color: Colors.red, width: 2.0), // Change border color on focus
+              color: Colors.red, width: 2.0), 
         ),
-        // contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 2),
-        errorText: errorText, // Display error text if provided
       ),
     );
   }
