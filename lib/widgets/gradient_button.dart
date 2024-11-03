@@ -10,8 +10,8 @@ class GradientButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.onTap,
-    this.width = 250, // Default width
-    this.height = 40, // Default height
+    this.width = 250,
+    this.height = 40, 
   });
 
   @override
@@ -34,8 +34,8 @@ class GradientButton extends StatelessWidget {
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.5),
-                offset: const Offset(0, 4), // Shadow position
-                blurRadius: 8, // Shadow blur
+                offset: const Offset(0, 4), 
+                blurRadius: 8, 
               ),
             ],
             borderRadius: BorderRadius.circular(30),

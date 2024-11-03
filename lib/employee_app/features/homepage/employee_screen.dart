@@ -124,10 +124,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hrm_front/common/data/values/colors.dart';
-import 'package:hrm_front/employee_app/features/company_policy/companypolicy.dart';
 import 'package:hrm_front/employee_app/widgets/employee_navbar.dart';
 import 'package:hrm_front/employee_app/widgets/sidebar_menu.dart';
 import 'package:hrm_front/widgets/attendance_summary.dart';
+import 'package:hrm_front/widgets/checkIn_button.dart';
 import 'package:hrm_front/widgets/custom_search_bar.dart';
 import 'package:hrm_front/widgets/shortcut_button.dart';
 
@@ -150,15 +150,15 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Hello Employee!",
-          style: const TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.black,
         toolbarHeight: 80.0,
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: CircleAvatar(
               backgroundColor: Colors.black,
               child: Icon(Icons.person, color: Colors.white),
@@ -170,7 +170,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: AppColors.gradientBackground,
         ),
         child: SingleChildScrollView(
@@ -183,10 +183,13 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                   print('Add button pressed');
                 },
               ),
+              const SizedBox(height: 10),
+              CheckInButton(),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'ATTENDANCE',
                     style: TextStyle(
                       fontSize: 16,
@@ -199,16 +202,16 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                       // Navigate to Attendance Detail Screen
                       // Example: Get.to(() => AttendanceDetailScreen());
                     },
-                    child: Text(
+                    child: const Text(
                       'view',
                       style: TextStyle(color: Colors.red),
                     ),
                   ),
                 ],
               ),
-              AttendanceSummary(),
-              SizedBox(height: 20),
-              Text(
+              const AttendanceSummary(),
+              const SizedBox(height: 20),
+              const Text(
                 'SHORTCUTS',
                 style: TextStyle(
                   fontSize: 16,
@@ -216,17 +219,17 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                   color: Colors.white,
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  GestureDetector(                 
+                  GestureDetector(
                     child: ShortcutButton(
                       title: 'My Profile',
                       icon: Icons.person,
                       onTap: () {
-                      Get.toNamed('/employee_profile');
-                    },
+                        Get.toNamed('/employee_profile');
+                      },
                     ),
                   ),
                   GestureDetector(
@@ -240,8 +243,9 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                     child: ShortcutButton(
                       title: 'Company Policies',
                       icon: Icons.contact_page,
-                      onTap: () { Get.toNamed(
-                      '/policies');},
+                      onTap: () {
+                        Get.toNamed('/policies');
+                      },
                     ),
                   ),
                 ],

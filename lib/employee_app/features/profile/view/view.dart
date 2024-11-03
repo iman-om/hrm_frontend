@@ -274,7 +274,7 @@ class EmployeeProfilePage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         buildProfileHeader(userProfile),
-                        const SizedBox(height: 16), // Spacing between sections
+                        const SizedBox(height: 16), 
                         buildProfileDetail('Email', userProfile.email, 'assets/icons/email.png'),
                         buildProfileDetail('Address', userProfile.address, 'assets/icons/address.png'),
                         buildProfileDetail('Phone Number', userProfile.phone, 'assets/icons/phone.png'),

@@ -46,7 +46,7 @@ class SidebarMenu extends StatelessWidget {
                     radius: 40,
                     backgroundImage: userProfile.photo?.isNotEmpty == true
                         ? NetworkImage(userProfile.photo!)
-                        : const AssetImage('assets/images/woman.jpg')
+                        : const AssetImage('assets/images/woman1.jpg')
                             as ImageProvider,
                   ),
                   const SizedBox(height: 8),
@@ -69,7 +69,7 @@ class SidebarMenu extends StatelessWidget {
             title: const Text('Home'),
             onTap: () {
               Get.back();
-              Get.toNamed('/home');
+              Get.toNamed('/manager_home');
             },
           ),
           ListTile(

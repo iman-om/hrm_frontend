@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hrm_front/common/features/qr_code/qr_code_scanner/qr_code_scanner_controller.dart';
-import 'package:http/http.dart';
-
+import 'package:hrm_front/employee_app/features/profile/view/view.dart';
 
 class EmployeeBottomNavigationBar extends StatelessWidget {
   final int selectedIndex;
@@ -22,7 +20,6 @@ class EmployeeBottomNavigationBar extends StatelessWidget {
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
         BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
         BottomNavigationBarItem(icon: Icon(Icons.qr_code), label: 'Punch In'),
-        BottomNavigationBarItem(icon: Icon(Icons.notifications), label: 'Notifications'),
         BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
       ],
       currentIndex: selectedIndex,
@@ -31,8 +28,8 @@ class EmployeeBottomNavigationBar extends StatelessWidget {
       onTap: (index) {
         onItemSelected(index);
 
-        if (index == 4) { // Profile tab is the 4th item (index 4)
-          Get.toNamed('/employee_profile');
+          if (index == 3) {
+          Get.to(EmployeeProfilePage());
         }
         if(index == 2 ){
           Get.toNamed('/qr-scanner');

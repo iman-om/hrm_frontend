@@ -10,6 +10,7 @@ class UserApi {
 
       if (response.statusCode == 200) {
         List<dynamic> data = jsonDecode(response.body)['data'];
+        print('data');
         List<User> users =
             data.map<User>((user) => User.fromJson(user)).toList();
 

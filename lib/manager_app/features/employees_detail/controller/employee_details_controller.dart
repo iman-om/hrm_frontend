@@ -1,14 +1,65 @@
+import 'dart:ffi';
+
 import 'package:get/get.dart';
 import 'package:hrm_front/common/data/models/emlpyees_model.dart';
 
 class EmployeeController extends GetxController {
   var employees = <Employee>[].obs;
 
-  @override
+   @override
   void onInit() {
     super.onInit();
     loadEmployees();
   }
+
+  void addEmployee({
+    required String firstName,
+    required String lastName,
+    required String designation,
+    required int departmentId,
+    required String photoUrl,
+    required String email,
+    required String address,
+    required String phone,
+    required bool gender,
+    required String bankName,
+    required String bankRIB,
+    required String insuranceNumber,
+    required String dateOfBirth,
+  }) {
+    // Create a new Employee object
+    Employee newEmployee = Employee(
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      address: address,
+      phone: phone,
+      designation: designation,
+      gender: gender,
+      bankName: bankName,
+      bankRIB: bankRIB,
+      insuranceNumber: insuranceNumber,
+      dateOfBirth: dateOfBirth,
+      status: true, 
+      photoUrl: photoUrl, 
+      departmentId: departmentId,
+    );
+
+    // Add the new employee to the list
+    employees.add(newEmployee);
+  }
+ // Method to delete an employee 
+  void deleteEmployee(int index) {
+    if (index >= 0 && index < employees.length) {
+      employees.removeAt(index);
+      Get.snackbar('Success', 'Employee deleted successfully',
+          snackPosition: SnackPosition.BOTTOM);
+    } else {
+      Get.snackbar('Error', 'Invalid employee index',
+          snackPosition: SnackPosition.BOTTOM);
+    }
+  }
+
 
   void loadEmployees() {
     employees.addAll([
@@ -176,4 +227,5 @@ class EmployeeController extends GetxController {
       ),
     ]);
   }
+
 }

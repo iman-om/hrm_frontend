@@ -28,6 +28,6 @@ class Employee {
     required this.insuranceNumber,
     required this.dateOfBirth,
     required this.status,
-    required this.photoUrl,
+    required this.photoUrl, 
   });
 }

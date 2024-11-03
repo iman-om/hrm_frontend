@@ -37,9 +37,6 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/employee_profile',
           page: () {
-            final String userIdStr = Get.parameters['userId'] ??
-                '0';
-            final int userId = int.tryParse(userIdStr) ?? 0;
             return EmployeeProfilePage();
           },
           binding: BindingsBuilder(() {
@@ -49,9 +46,6 @@ class MyApp extends StatelessWidget {
          GetPage(
           name: '/employee_editprofile',
           page: () {
-            final String userIdStr = Get.parameters['userId'] ??
-                '0';
-            final int userId = int.tryParse(userIdStr) ?? 0;
             return EditProfileEmployeeScreen();
           },
           binding: BindingsBuilder(() {
